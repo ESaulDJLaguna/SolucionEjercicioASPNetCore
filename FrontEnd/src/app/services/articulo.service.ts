@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Articulo } from '../models/Articulo';
 import { HttpClient } from '@angular/common/http';
+import { Articulo } from '../models/Articulo';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,6 @@ export class ArticuloService {
       .toPromise()
       .then((data) => {
         this.articulos = data as Articulo[];
-        console.log('Obtuve de BD');
       });
   }
 
@@ -47,7 +46,7 @@ export class ArticuloService {
     this.actualizarFormulario.next(articulo);
   }
 
-  obtenerTarjetaForm(): Observable<Articulo> {
+  obtenerArticuloForm(): Observable<Articulo> {
     return this.actualizarFormulario.asObservable();
   }
 }

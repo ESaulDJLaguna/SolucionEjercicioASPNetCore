@@ -16,6 +16,9 @@ import { ArticulosComponent } from './components/bodega/lista-articulos/articulo
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticuloService } from './services/articulo.service';
 import { AppRoutingModule } from './app-routing.module';
+import { ClienteService } from './services/cliente.service';
+import { AgregarClienteComponent } from './components/bodega/lista-clientes/agregar-cliente/agregar-cliente.component';
+import { ClientesComponent } from './components/bodega/lista-clientes/clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     MenuBodegaComponent,
     AgregarArticuloComponent,
     ArticulosComponent,
+    AgregarClienteComponent,
+    ClientesComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [ArticuloService],
+  providers: [ArticuloService, ClienteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

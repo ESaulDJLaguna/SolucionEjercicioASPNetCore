@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Articulo } from 'src/app/models/Articulo';
@@ -10,12 +10,14 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './agregar-articulo.component.html',
   styleUrls: ['./agregar-articulo.component.css'],
 })
-export class AgregarArticuloComponent implements OnInit {
+export class AgregarArticuloComponent implements OnInit, OnDestroy {
+  //* ATRIBUTOS
   form!: FormGroup;
   subscription!: Subscription;
   articulo!: Articulo;
   idArticulo: number | undefined = 0;
 
+  //* CONSTRUCTOR
   constructor(
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
@@ -30,9 +32,10 @@ export class AgregarArticuloComponent implements OnInit {
     });
   }
 
+  //* INTERFACES
   ngOnInit(): void {
     this.subscription = this.articuloService
-      .obtenerTarjetaForm()
+      .obtenerArticuloForm()
       .subscribe((data) => {
         this.articulo = data;
         this.form.patchValue({
@@ -45,6 +48,11 @@ export class AgregarArticuloComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  //* MÉTODOS
   guardarArticulo() {
     if (this.idArticulo === 0 || this.idArticulo === undefined) {
       this.agregar();
@@ -54,7 +62,7 @@ export class AgregarArticuloComponent implements OnInit {
   }
 
   agregar() {
-    const articulo = {
+    const articulo: Articulo = {
       codigo: this.form.get('codigo')?.value,
       precio: this.form.get('precio')?.value,
       stock: this.form.get('stock')?.value,
