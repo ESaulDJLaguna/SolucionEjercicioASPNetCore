@@ -14,4 +14,8 @@ export class MenuComponent implements OnInit {
   accederABodega(): void {
     this.router.navigate(['bodega']);
   }
+
+  accederAUsuario(): void {
+    this.router.navigate(['usuario']);
+  }
 }

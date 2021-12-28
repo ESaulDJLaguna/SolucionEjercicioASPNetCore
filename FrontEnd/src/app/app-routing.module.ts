@@ -7,9 +7,13 @@ import { ListaArticulosComponent } from './components/bodega/lista-articulos/lis
 import { MenuComponent } from './components/menu/menu.component';
 import { ListaClientesComponent } from './components/bodega/lista-clientes/lista-clientes.component';
 import { ListaTiendasComponent } from './components/bodega/lista-tiendas/lista-tiendas.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ListaArticulosClienteComponent } from './components/usuario/lista-articulos-cliente/lista-articulos-cliente.component';
+import { CarritoComprasComponent } from './components/usuario/carrito-compras/carrito-compras.component';
 
 const routes: Routes = [
-  { path: '', component: MenuComponent },
+  { path: '', component: AuthComponent },
   {
     path: 'bodega',
     component: BodegaComponent,
@@ -17,6 +21,14 @@ const routes: Routes = [
       { path: 'lista-articulos', component: ListaArticulosComponent },
       { path: 'lista-clientes', component: ListaClientesComponent },
       { path: 'lista-tiendas', component: ListaTiendasComponent },
+    ],
+  },
+  {
+    path: 'usuario',
+    component: UsuarioComponent,
+    children: [
+      { path: 'tienda', component: ListaArticulosClienteComponent },
+      { path: 'carrito', component: CarritoComprasComponent },
     ],
   },
 ];
