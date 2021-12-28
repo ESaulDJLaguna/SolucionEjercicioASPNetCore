@@ -27,6 +27,12 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { MenuClienteComponent } from './components/usuario/menu-cliente/menu-cliente.component';
 import { CarritoComprasComponent } from './components/usuario/carrito-compras/carrito-compras.component';
 import { ListaArticulosClienteComponent } from './components/usuario/lista-articulos-cliente/lista-articulos-cliente.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
+import { PedirBodegaComponent } from './components/tienda/pedir-bodega/pedir-bodega.component';
+import { ListaArticulosTiendaComponent } from './components/tienda/lista-articulos-tienda/lista-articulos-tienda.component';
+import { MenuTiendaComponent } from './components/tienda/menu-tienda/menu-tienda.component';
+import { CarritoTiendaService } from './services/carrito-tienda.service';
+import { CarritoService } from './services/carrito.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +54,10 @@ import { ListaArticulosClienteComponent } from './components/usuario/lista-artic
     MenuClienteComponent,
     CarritoComprasComponent,
     ListaArticulosClienteComponent,
+    TiendaComponent,
+    PedirBodegaComponent,
+    ListaArticulosTiendaComponent,
+    MenuTiendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,13 @@ import { ListaArticulosClienteComponent } from './components/usuario/lista-artic
     ToastrModule.forRoot(),
     FormsModule,
   ],
-  providers: [ArticuloService, ClienteService, TiendaService],
+  providers: [
+    ArticuloService,
+    ClienteService,
+    TiendaService,
+    CarritoService,
+    CarritoTiendaService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

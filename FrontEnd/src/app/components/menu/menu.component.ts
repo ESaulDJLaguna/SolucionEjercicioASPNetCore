@@ -18,4 +18,8 @@ export class MenuComponent implements OnInit {
   accederAUsuario(): void {
     this.router.navigate(['usuario']);
   }
+
+  accederATienda(): void {
+    this.router.navigate(['tienda']);
+  }
 }

@@ -13,6 +13,9 @@ export class AuthComponent implements OnInit {
   //* ATRIBUTOS
   userName!: string;
   password!: string;
+  newPass1!: string;
+  newPass2!: string;
+  existeCliente!: Cliente[];
 
   constructor(
     private clienteService: ClienteService,
@@ -26,13 +29,16 @@ export class AuthComponent implements OnInit {
 
   acceder() {
     let clientes = this.clienteService.clientes;
-    let existeCliente = clientes.filter((cliente) => {
+    this.existeCliente = clientes.filter((cliente) => {
       return cliente.usuario === this.userName;
     });
 
-    if (existeCliente.length === 1) {
-      if (existeCliente[0].password === this.password) {
-        this.router.navigate(['usuario']);
+    if (this.existeCliente.length === 1) {
+      if (this.existeCliente[0].password === this.password) {
+        if (this.password === '1') {
+        } else {
+          this.router.navigate(['usuario']);
+        }
       } else {
         this.toastr.error(
           'Alguno de los datos es incorrecto',
@@ -45,5 +51,36 @@ export class AuthComponent implements OnInit {
         'Usuario no Encontrado'
       );
     }
+  }
+
+  cambiaPassword() {
+    if (this.newPass1.length >= 6) {
+      if (this.newPass1 === this.newPass2) {
+        let cliente = this.existeCliente[0];
+        cliente.password = this.newPass1;
+        console.log(cliente);
+        this.clienteService
+          .actualizarClienteEnBD(cliente.idCliente, cliente)
+          .subscribe((data) => {
+            this.toastr.success(
+              'Las contraseñas fue editada de manera satisfactoria',
+              'Contraseñas Editada'
+            );
+            this.router.navigate(['usuario']);
+          });
+      } else {
+        this.toastr.error(
+          'Las contraseñas no coinciden',
+          'Contraseñas distintas'
+        );
+      }
+    } else {
+      this.toastr.error(
+        'La contraseña debe ser de al menos 6 caracteres.',
+        'Contraseña muy corta'
+      );
+    }
+    this.newPass1 = '';
+    this.newPass2 = '';
   }
 }

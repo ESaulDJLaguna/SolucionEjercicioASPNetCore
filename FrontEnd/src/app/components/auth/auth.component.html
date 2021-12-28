@@ -35,10 +35,38 @@
 						</div>
 						<div class="form-group">
 							<!-- <input routerLink="usuario" type="submit" value="Acceder" class="btn float-right login_btn"> -->
-							<button class="btn login_btn" type="button" (click)="acceder()">Acceder</button>
+							<button class="btn login_btn" type="button" (click)="acceder()" data-bs-toggle="modal"
+								data-bs-target="#cambioContraseña">Acceder</button>
 						</div>
 					</form>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cambioContraseña" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true" *ngIf="password === '1'">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Tu cuenta fue generada desde la administración. Elige una nueva
+					de al menos 6 caracteres.</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<input type="password" class="form-control mb-3" placeholder="Contraseña nueva" [(ngModel)]="newPass1"
+						[ngModelOptions]="{standalone: true}">
+					<input type="password" class="form-control" placeholder="Repite la contraseña" [(ngModel)]="newPass2"
+						[ngModelOptions]="{standalone: true}">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+					(click)="cambiaPassword()">Guardar</button>
 			</div>
 		</div>
 	</div>

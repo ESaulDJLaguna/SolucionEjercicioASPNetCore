@@ -11,6 +11,9 @@ import { AuthComponent } from './components/auth/auth.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ListaArticulosClienteComponent } from './components/usuario/lista-articulos-cliente/lista-articulos-cliente.component';
 import { CarritoComprasComponent } from './components/usuario/carrito-compras/carrito-compras.component';
+import { ListaArticulosTiendaComponent } from './components/tienda/lista-articulos-tienda/lista-articulos-tienda.component';
+import { PedirBodegaComponent } from './components/tienda/pedir-bodega/pedir-bodega.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
@@ -29,6 +32,14 @@ const routes: Routes = [
     children: [
       { path: 'tienda', component: ListaArticulosClienteComponent },
       { path: 'carrito', component: CarritoComprasComponent },
+    ],
+  },
+  {
+    path: 'tienda',
+    component: TiendaComponent,
+    children: [
+      { path: 'articulos-en-bodega', component: ListaArticulosTiendaComponent },
+      { path: 'pedir-a-bodega', component: PedirBodegaComponent },
     ],
   },
 ];
