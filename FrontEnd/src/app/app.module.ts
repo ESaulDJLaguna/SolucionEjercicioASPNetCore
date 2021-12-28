@@ -19,6 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClienteService } from './services/cliente.service';
 import { AgregarClienteComponent } from './components/bodega/lista-clientes/agregar-cliente/agregar-cliente.component';
 import { ClientesComponent } from './components/bodega/lista-clientes/clientes/clientes.component';
+import { TiendasComponent } from './components/bodega/lista-tiendas/tiendas/tiendas.component';
+import { AgregarTiendaComponent } from './components/bodega/lista-tiendas/agregar-tienda/agregar-tienda.component';
+import { TiendaService } from './services/tienda.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { ClientesComponent } from './components/bodega/lista-clientes/clientes/c
     ArticulosComponent,
     AgregarClienteComponent,
     ClientesComponent,
+    TiendasComponent,
+    AgregarTiendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ import { ClientesComponent } from './components/bodega/lista-clientes/clientes/c
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [ArticuloService, ClienteService],
+  providers: [ArticuloService, ClienteService, TiendaService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
