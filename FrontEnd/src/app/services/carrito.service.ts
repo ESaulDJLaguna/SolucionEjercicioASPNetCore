@@ -5,7 +5,7 @@ import { Carrito } from '../models/Carrito';
   providedIn: 'root',
 })
 export class CarritoService {
-  private carrito: Carrito[] = [];
+  carrito: Carrito[] = [];
 
   constructor() {}
 

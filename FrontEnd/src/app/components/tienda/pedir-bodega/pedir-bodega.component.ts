@@ -36,12 +36,15 @@ export class PedirBodegaComponent implements OnInit {
 
   realizarPago() {
     if (this.total === 0) {
-      //TODO. GUARDAR DATOS EN LA BASE DE DATOS
-      //TODO. DISMINUIR EL STOCK DE LOS ARTÍCULOS AGREGADOS
-      //TODO. LIMPIAR EL CARRITO DE COMPRAS
       this.toastr.error('Elige al menos un artículo', 'Carrito Vacío');
     } else {
-      console.log(this.total);
+      //TODO. GUARDAR DATOS EN LA BASE DE DATOS
+      //TODO. DISMINUIR EL STOCK DE LOS ARTÍCULOS AGREGADOS
+      this.carritoTiendaService.carrito = [];
+      this.toastr.success(
+        'El pedido a la bodega fue realizado con éxito',
+        'Pedido realizado'
+      );
     }
   }
 }

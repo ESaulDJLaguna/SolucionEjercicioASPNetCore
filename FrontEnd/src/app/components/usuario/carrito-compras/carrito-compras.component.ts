@@ -36,12 +36,15 @@ export class CarritoComprasComponent implements OnInit {
 
   realizarPago() {
     if (this.total === 0) {
-      //TODO. GUARDAR DATOS EN LA BASE DE DATOS
-      //TODO. DISMINUIR EL STOCK DE LOS ARTÍCULOS AGREGADOS
-      //TODO. LIMPIAR EL CARRITO DE COMPRAS
       this.toastr.error('Elige al menos un artículo', 'Carrito Vacío');
     } else {
-      console.log(this.total);
+      //TODO. GUARDAR DATOS EN LA BASE DE DATOS
+      //TODO. DISMINUIR EL STOCK DE LOS ARTÍCULOS AGREGADOS
+      this.carritoService.carrito = [];
+      this.toastr.success(
+        'La compra fue realizada con éxito',
+        'Compra realizada'
+      );
     }
   }
 }
